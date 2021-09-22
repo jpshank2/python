@@ -73,25 +73,6 @@ BUSClients = getBUSClients.fetchall()
 # WHERE E.ClientStatus <> 'LOST' AND E.ContIndex NOT IN (SELECT E.ContIndex
 # FROM dbo.tblEngagement E
 # 	INNER JOIN dbo.tblContacts C ON C.ContIndex = E.ContIndex
-# 	INNER JOIN dbo.tblClientServices S ON S.ContIndex = E.ContIndex AND S.ServIndex = 'MAS'
-# 	INNER JOIN dbo.tblStaff SP ON SP.StaffIndex = S.ServPartner
-# 	INNER JOIN dbo.tblStaff SM ON SM.StaffIndex = S.ServManager
-# 	INNER JOIN dbo.tblJob_Header JH ON JH.ContIndex = E.ContIndex AND JH.Job_Template = 262
-# WHERE E.ClientStatus <> 'LOST' AND E.ContIndex < 900000)
-# ORDER BY ContIndex ASC""")
-
-# ActiveClients = getActiveClients.fetchall()
-
-skippedClients = list()
-MASskippedClients = list()
-
-servurl = os.getenv('PE_URL')
-appid = os.getenv('PE_APPID')
-appkey = os.getenv('PE_APPKEY')
-
-authurl = servurl + '/auth/connect/token'
-auth = (appid, appkey)
-authtype = {'grant_type': 'client_credentials', 'scope': 'pe.api'}
 
 resptoken = requests.post(authurl, data=authtype, auth=auth)
 
