@@ -40,7 +40,7 @@ def delete(file):
     print("Deleting " + file + "'s temp file")
     os.remove("C:\\Users\\jeremyshank\\Desktop\\No Macro\\" + file + " Weekly Hours Report.xlsx")
 
-conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + os.getenv('DB_SERVER') + ';DATABASE=' + os.getenv('DB_DATABASE') + ';UID=' + os.getenv('DB_USER') + ';PWD=' + os.getenv('DB_PASS'))
+conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + os.getenv('DB_SERVER') + ';DATABASE=' + os.getenv('DB_DATABASE') + ';UID=' + os.getenv('DB_USER') + ';PWD=' + os.getenv('DB_PASS') + ';Authentication=ActiveDirectoryPassword')
 
 namerow = conn.cursor()
 namerow.execute("""SELECT StaffName, StaffEMail
