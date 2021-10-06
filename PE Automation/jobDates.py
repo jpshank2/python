@@ -10,7 +10,7 @@ getJobsToUpdate.execute("""SELECT j.job_idx
 FROM tblEngagement AS E
 INNER JOIN tblJob_Header  AS J    ON j.ContIndex = e.ContIndex 
 WHERE e.ClientStatus NOT IN ('LOST', 'INTERNAL') AND j.Job_Status not in (2,3) and j.Job_Template = 75 and j.Job_Period_End >'12/31/2021'
-ORDER BY j.Job_Idx DESC""")
+ORDER BY j.Job_Idx ASC""")
 
 jobs = getJobsToUpdate.fetchall()
 

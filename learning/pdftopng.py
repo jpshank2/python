@@ -10,14 +10,14 @@ import os
 #         for page in pages:
 #             page.save('C:\\Users\\jeremyshank\\OneDrive - BMSS\\Chris and Sarah Pictures\\Sarah\\' + file.name + '.png', 'PNG')
 
-pic_path = 'C:\\Users\\jeremyshank\\OneDrive - BMSS\\Chris and Sarah Pictures\\Sarah\\'
+pic_path = 'C:\\Users\\jeremyshank\\OneDrive - BMSS\\Chris and Sarah Pictures\\Sarah\\Fixed'
 
 with os.scandir(pic_path) as folder:
     for count, file in enumerate(folder):
         if not os.path.isdir(os.path.abspath(file)):
             print(count)
             print(os.path.abspath(file))
-            os.rename(os.path.abspath(file), os.path.join(pic_path, 'Fixed\\', str(count) + '.png'))
+            os.rename(os.path.abspath(file), os.path.join(os.path.dirname(pic_path), 'Final\\', str(count) + '.png'))
     # dst = str(count) + '.png'
     # src = str('C:\\Users\\jeremyshank\\OneDrive - BMSS\\Chris and Sarah Pictures\\Sarah\\') + filename
     # dst = str('C:\\Users\\jeremyshank\\OneDrive - BMSS\\Chris and Sarah Pictures\\Sarah\\') + dst
