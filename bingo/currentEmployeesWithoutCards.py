@@ -35,19 +35,19 @@ for employee in currentEmpsWithoutCards:
 
     cardToAssign = firstAvailableCard.fetchall()[0][0]
     print(employee[1] + " - " + str(employee[0]) + ' ' + str(cardToAssign))
-    # addEmpToGame = devopsConn.cursor()
-    # addEmpToGame.execute("UPDATE dbo.BingoCards SET BingoUser = " + str(employee[0]) + ", BingoCompany = 'BMSS' WHERE BingoCard = " + str(cardToAssign))
-    # addEmpToGame.commit()
+    addEmpToGame = devopsConn.cursor()
+    addEmpToGame.execute("UPDATE dbo.BingoCards SET BingoUser = " + str(employee[0]) + ", BingoCompany = 'BMSS' WHERE BingoCard = " + str(cardToAssign))
+    addEmpToGame.commit()
 
-    # path = "C:\\Users\\jeremyshank\\Documents\\Bingo\\Cards\\" + str(cardToAssign) + '.xlsx'
+    path = "C:\\Users\\jeremyshank\\Documents\\Bingo\\Cards\\" + str(cardToAssign) + '.xlsx'
 
-    # outlook = wc.Dispatch('outlook.application')
-    # mail = outlook.CreateItem(0)
+    outlook = wc.Dispatch('outlook.application')
+    mail = outlook.CreateItem(0)
 
-    # mail.To = employee[2]
-    # mail.CC = 'bshealy@bmss.com'
-    # mail.Subject = 'Welcome to the Bingo Game!'
-    # mail.Attachments.Add(path)
-    # mail.HTMLBody = '<p>' + employee[1] + ',</p><p>Here is your newly assigned Bingo card. If you had a card previously and were removed from the game for any reason this will be your new permanent card. Rules for the Bingo game can be found <a href="http://zeal.bmss.com/kb/time-entry-and-bingo/">here</a> on Zeal.</p>'
+    mail.To = employee[2]
+    mail.CC = 'bshealy@bmss.com'
+    mail.Subject = 'Welcome to the Bingo Game!'
+    mail.Attachments.Add(path)
+    mail.HTMLBody = '<p>' + employee[1] + ',</p><p>Here is your newly assigned Bingo card. If you had a card previously and were removed from the game for any reason this will be your new permanent card. Rules for the Bingo game can be found <a href="http://zeal.bmss.com/kb/time-entry-and-bingo/">here</a> on Zeal.</p>'
 
-    # mail.Send()
+    mail.Send()

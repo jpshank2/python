@@ -1,21 +1,26 @@
 from dotenv import load_dotenv
-import requests, os, pyodbc, json
+import requests, os, pyodbc, time, json
 
 load_dotenv(os.path.dirname(os.path.dirname(__file__)) + '\\.env')
 engine = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + os.getenv('DB_SERVER') + ';DATABASE=' + os.getenv('DB_DATABASE') + ';UID=' + os.getenv('DB_USER') + ';PWD=' + os.getenv('DB_PASS') + ';Authentication=ActiveDirectoryPassword')
 
-getJobsToUpdate = engine.cursor()
+getBadJobs = engine.cursor()
 
-getJobsToUpdate.execute("""SELECT j.job_idx
-FROM tblEngagement AS E
-INNER JOIN tblJob_Header  AS J    ON j.ContIndex = e.ContIndex 
-WHERE e.ClientStatus NOT IN ('LOST', 'INTERNAL') AND j.Job_Status not in (2,3) and j.Job_Template = 75 and j.Job_Period_End >'12/31/2021'
-ORDER BY j.Job_Idx DESC""")
+getBadJobs.execute("""SELECT TOP 1218 [Job_Idx]
+      ,JH.ContIndex
+      ,e.ClientPartner
+      ,[Job_Manager]
+      ,[Job_InCharge]
+      ,Job_Biller
+      ,[Job_Frequency]
+      ,[Job_Recurring]
+      ,[Job_ETCRequired]
+  FROM tblJob_Header JH
+  inner join tblEngagement E on JH.ContIndex=E.ContIndex
+  where job_partner=1 and Job_Status not in (-1,2,3,98)
+  ORDER BY Job_Idx DESC""")
 
-jobs = getJobsToUpdate.fetchall()
-
-skippedClients = list()
-MASskippedClients = list()
+BadJobs = getBadJobs.fetchall()
 
 servurl = os.getenv('PE_URL')
 appid = os.getenv('PE_APPID')
@@ -32,16 +37,26 @@ token = resptoken.json()['access_token']
 apiheader = {'Authorization': 'Bearer ' + token,
   'Content-Type': 'application/json'}
 
-skipped = list()
+badJobs = list()
 
-for job in jobs:
-    output = requests.request('POST', servurl + '/pe/api/jobs/savedates', headers=apiheader, data=json.dumps({
+for job in BadJobs:
+    output = requests.request('POST', servurl + '/pe/api/jobs/savemanagement', headers=apiheader, data=json.dumps({
         "Job_Idx": job[0],
-        "Job_Period_Start": "2021-10-01",
-        "Job_Period_End": "2022-09-30"
+        "Job_Partner": job[2],
+        "Job_Manager": job[3],
+        "Job_InCharge": job[4],
+        "Job_Biller": 0,
+        "Job_ETCRequired": True,
+        "Job_Frequency": job[6],
+        "Job_Recurring": job[7]
     }))
 
-    if output.status_code != 200:
-        skipped.append({'job': job[0], 'status': output.status_code, 'reason': output.text})
+    if output.status_code == 200:
+        print(job[0])
+        print('\n')
+    else:
+        badJobs.append({'Job': job[0], 'Status': output.status_code, 'Reason': output.text})
+    
+    time.sleep(5)
 
-print(skipped)
+print(badJobs)
