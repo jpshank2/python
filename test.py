@@ -2,363 +2,118 @@
 # this is a playground to quickly test ideas
 #
 test = [{
-    'name': 'Jefferson County Commission',
-    'bmss': {
-        'status': 'ACTIVE',
-        'partner': 'Derrel Curry',
-        'manager': 'Derrel Curry'
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 199087,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'City of Birmingham',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 193681,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'The Arc of Central Alabama',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 203692,
+    'point_of_error': 'except block'
 }, {
-    'name': 'Walker Area Community Foundation',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 203691,
+    'point_of_error': 'except block'
 }, {
-    'name': 'Hibbett Inc.',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 203690,
+    'point_of_error': 'except block'
 }, {
-    'name': 'Coca-Cola Bottling Company UNITED ',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 203679,
+    'point_of_error': 'except block'
 }, {
-    'name': "Ascension St. Vincent's",
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 203681,
+    'point_of_error': 'except block'
 }, {
-    'name': 'Hoar Construction, LLC',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 226657,
+    'point_of_error': 'except block'
 }, {
-    'name': 'Consolidated Pipe & Supply Company, Inc.',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 176182,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'Porter Capital Corporation',
-    'bmss': {
-        'status': 'Unlikely',
-        'partner': 'John Shank',
-        'manager': 'Laura Hanks'
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 180535,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'Southern Veterinary Partners',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 180536,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'Warren Averett',
-    'bmss': {
-        'status': 'LOST',
-        'partner': 'Jim Himmelwright',
-        'manager': 'Jim Himmelwright'
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 180537,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'CAC Specialty/Cobbs Allen',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 175419,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'Apex Roofing & Restoration',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 69378,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': "America's Thrift Stores",
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 206795,
+    'point_of_error': 'except block'
 }, {
-    'name': 'ProxsysRx',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 206796,
+    'point_of_error': 'except block'
 }, {
-    'name': 'Strong Automotive Merchandising',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 206797,
+    'point_of_error': 'except block'
 }, {
-    'name': 'ARC Realty',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 206798,
+    'point_of_error': 'except block'
 }, {
-    'name': 'City Paper Company',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 206799,
+    'point_of_error': 'except block'
 }, {
-    'name': 'Fravert Services',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 123212,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'Retail Specialists/ Retail Strategies',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 143114,
+    'point_of_error': 'except block'
 }, {
-    'name': 'IllumiCare',
-    'bmss': {
-        'status': 'ACTIVE',
-        'partner': 'Scott Stevens',
-        'manager': 'Ashley Caldwell'
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 227589,
+    'status': 400,
+    'reason':
+    '{"Content":"[{\\"type\\":\\"dialog\\",\\"message\\":\\"The Job could not be set to Complete. The Job has unposted WIP.\\",\\"level\\":\\"warning\\"}]","ContentType":"application/json","StatusCode":400}',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'Shannon Waltchack',
-    'bmss': {
-        'status': 'ACTIVE',
-        'partner': 'David King',
-        'manager': 'David King'
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 176392,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
 }, {
-    'name': 'Crawford Square Real Estate Advisors',
-    'bmss': {
-        'status': 'never',
-        'partner': None,
-        'manager': None
-    },
-    'abit': {
-        'status': 'never',
-        'agreement': None
-    },
-    'pbs': {
-        'status': 'never',
-        'manager': None
-    }
+    'job': 176372,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
+}, {
+    'job': 176373,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
+}, {
+    'job': 176374,
+    'status': 400,
+    'reason': '["The Job_Office field is required."]',
+    'point_of_error': 'updateDetails'
+}, {
+    'job': 200122,
+    'status': 400,
+    'reason':
+    '{"Content":"[{\\"type\\":\\"dialog\\",\\"message\\":\\"The Job could not be set to Complete. The Job has unposted WIP.\\",\\"level\\":\\"warning\\"}]","ContentType":"application/json","StatusCode":400}',
+    'point_of_error': 'updateDetails'
 }]
+
+print(len(test))

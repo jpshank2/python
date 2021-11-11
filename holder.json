@@ -1,0 +1,70 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Vary": "Accept-Encoding",
+        "x-ms-service-request-id": "e4b2ab33-2364-41d7-8e02-9c0afbea7683,e83de8bd-df49-4678-9a7f-d5165265e4fb",
+        "Cache-Control": "no-cache",
+        "Set-Cookie": "ARRAffinity=beb393171294375192e0a3651b651f1dcad23755a6f9a313cbb02b7c69e89b65; domain=org82c1cc46.crm.dynamics.com; path=/; secure; HttpOnly,ReqClientId=83b0f4b1-7086-4edc-ab1d-e2f1bbc95cae; expires=Tue, 27-Oct-2071 21:33:13 GMT; path=/; secure; HttpOnly,ARRAffinity=beb393171294375192e0a3651b651f1dcad23755a6f9a313cbb02b7c69e89b65; domain=org82c1cc46.crm.dynamics.com; path=/; secure; HttpOnly",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "REQ_ID": "e83de8bd-df49-4678-9a7f-d5165265e4fb",
+        "AuthActivityId": "0558665c-b689-4a1d-8ea2-bf1d7d75c352",
+        "x-ms-dop-hint": "8",
+        "x-ms-ratelimit-time-remaining-xrm-requests": "1,200.00",
+        "x-ms-ratelimit-burst-remaining-xrm-requests": "7997",
+        "OData-Version": "4.0",
+        "Preference-Applied": "odata.include-annotations=\"*\"",
+        "X-Source": "1841421754132106118131521021691193391039858111642388618112469101120172175188113209,1841421754132106118131521021691193391039858111642388618112469101120172175188113209",
+        "Public": "OPTIONS,GET,HEAD,POST",
+        "Timing-Allow-Origin": "*",
+        "Date": "Wed, 27 Oct 2021 21:33:12 GMT",
+        "Allow": "OPTIONS,GET,HEAD,POST",
+        "Content-Type": "application/json; odata.metadata=full",
+        "Expires": "-1",
+        "Content-Length": "2233"
+    },
+    "body": {
+        "@odata.context": "https://org82c1cc46.crm.dynamics.com/api/data/v9.1/$metadata#crf69_clientserviceses(createdon,crf69_clientservice,crf69_clientservicedesc,crf69_servicepartnerindex,crf69_servicemanagerindex)",
+        "#Microsoft.Dynamics.CRM.DeleteMultiple": {
+            "title": "DeleteMultiple",
+            "target": "https://org82c1cc46.crm.dynamics.com/api/data/v9.1/crf69_clientserviceses/Microsoft.Dynamics.CRM.crmbaseentity/Microsoft.Dynamics.CRM.DeleteMultiple"
+        },
+        "@Microsoft.Dynamics.CRM.totalrecordcount": -1,
+        "@Microsoft.Dynamics.CRM.totalrecordcountlimitexceeded": false,
+        "value": [
+            {
+                "@odata.type": "#Microsoft.Dynamics.CRM.crf69_clientservices",
+                "@odata.id": "https://org82c1cc46.crm.dynamics.com/api/data/v9.1/crf69_clientserviceses(46db3b5c-6d37-ec11-b6e6-000d3a5ca48b)",
+                "@odata.etag": "W/\"8124768\"",
+                "@odata.editLink": "crf69_clientserviceses(46db3b5c-6d37-ec11-b6e6-000d3a5ca48b)",
+                "createdon@OData.Community.Display.V1.FormattedValue": "10/27/2021 4:32 PM",
+                "createdon@odata.type": "#DateTimeOffset",
+                "createdon": "2021-10-27T21:32:19Z",
+                "crf69_clientservice": "BUSTAX",
+                "crf69_clientservicedesc": "Business Tax",
+                "crf69_servicepartnerindex@OData.Community.Display.V1.FormattedValue": "66",
+                "crf69_servicepartnerindex": 66,
+                "crf69_servicemanagerindex@OData.Community.Display.V1.FormattedValue": "66",
+                "crf69_servicemanagerindex": 66,
+                "crf69_clientservicesid@odata.type": "#Guid",
+                "crf69_clientservicesid": "46db3b5c-6d37-ec11-b6e6-000d3a5ca48b"
+            },
+            {
+                "@odata.type": "#Microsoft.Dynamics.CRM.crf69_clientservices",
+                "@odata.id": "https://org82c1cc46.crm.dynamics.com/api/data/v9.1/crf69_clientserviceses(9e5fd75f-6d37-ec11-b6e6-000d3a5cabd6)",
+                "@odata.etag": "W/\"8124769\"",
+                "@odata.editLink": "crf69_clientserviceses(9e5fd75f-6d37-ec11-b6e6-000d3a5cabd6)",
+                "createdon@OData.Community.Display.V1.FormattedValue": "10/27/2021 4:32 PM",
+                "createdon@odata.type": "#DateTimeOffset",
+                "createdon": "2021-10-27T21:32:26Z",
+                "crf69_clientservice": "SALT",
+                "crf69_clientservicedesc": "SALT",
+                "crf69_servicepartnerindex@OData.Community.Display.V1.FormattedValue": "66",
+                "crf69_servicepartnerindex": 66,
+                "crf69_servicemanagerindex@OData.Community.Display.V1.FormattedValue": "66",
+                "crf69_servicemanagerindex": 66,
+                "crf69_clientservicesid@odata.type": "#Guid",
+                "crf69_clientservicesid": "9e5fd75f-6d37-ec11-b6e6-000d3a5cabd6"
+            }
+        ]
+    }
+}
