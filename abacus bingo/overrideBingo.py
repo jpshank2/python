@@ -6,7 +6,7 @@ load_dotenv(os.path.dirname(os.path.dirname(__file__)) + '\\.env')
 cwConn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + os.getenv('CW_SERVER') + ';DATABASE=' + os.getenv('CW_DATABASE') + ';UID=' + os.getenv('CW_USER') + ';PWD=' + os.getenv('CW_PASS'))
 devopsConn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + os.getenv('DEV_SERVER') + ';DATABASE=' + os.getenv('DEV_DATABASE') + ';UID=' + os.getenv('DEV_USER') + ';PWD=' + os.getenv('DEV_PASS'))
 
-overrideUsersList = ['Travon Howard']
+overrideUsersList = ['Samantha Knight', 'James Cowan']
 
 overrideUsersIntList = cwConn.cursor()
 
