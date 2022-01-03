@@ -22,7 +22,7 @@ def getHRMembers(leader):
     
     return hrMembers
 
-for x in range(0, hrLeaders.shape[0]):
+for x in range(0, 3):#hrLeaders.shape[0]):
     myHomeroom = getHRMembers(hrLeaders.iloc[x]['Category'])
     wb = Workbook()
 

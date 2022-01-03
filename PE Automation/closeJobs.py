@@ -28,18 +28,13 @@ skipped = list()
 
 for x in range(0, df.shape[0]):
     row = df.iloc[x]
-    dfSQL = pd.read_sql("""SELECT Job_Idx, 
-    ContIndex,
-    Job_CurrentStaff,
-    Job_Name,
-    Job_Code,
-    Job_Class,
-    Job_Status,
-    Job_WorkStatus,
-    Job_Dept,
-    Job_Office,
-    Job_MasterFile
-    FROM dbo.tblJob_Header WHERE Job_Idx = """ + str(row['Old Job']), bmss)
+    dfSQL = pd.read_sql("""SELECT TOP 1 JHA.Job_Status
+      ,JHA.Job_WorkStatus
+      ,JHA.Job_CurrentStaff
+FROM tblJob_Header_Audit JHA
+where JHA.Job_Updated_By <> 'jeremyshank@bmss.com' and JHA.Job_Idx = """ + str(row['Old Job']) + """
+order by JHA.Job_Updated DESC
+ """, bmss)
     # print('yes' if dfSQL.iloc[0]['Job_Office'] == '' else 'no' )
     try:
         # print(row['Job_Idx'])
@@ -53,40 +48,40 @@ for x in range(0, df.shape[0]):
         # if updateManagement.status_code != 200:
         #     skipped.append({'job': row['Job_Idx'], 'status': updateManagement.status_code, 'reason': updateManagement.text, 'point_of_error': 'updateManagement'})
 
-        if dfSQL.iloc[0]['Job_Status'] != 0:
-            newJobStatus = pd.read_sql("""SELECT Job_Idx, 
-    ContIndex,
-    Job_CurrentStaff,
-    Job_Name,
-    Job_Code,
-    Job_Class,
-    Job_Status,
-    Job_WorkStatus,
-    Job_Dept,
-    Job_Office,
-    Job_MasterFile
-    FROM dbo.tblJob_Header WHERE Job_Idx = """ + str(row['New Job']), bmss)
+        # if dfSQL.iloc[0]['Job_Status'] != 0:
+        newJobStatus = pd.read_sql("""SELECT Job_Idx, 
+ContIndex,
+Job_CurrentStaff,
+Job_Name,
+Job_Code,
+Job_Class,
+Job_Status,
+Job_WorkStatus,
+Job_Dept,
+Job_Office,
+Job_MasterFile
+FROM dbo.tblJob_Header WHERE Job_Idx = """ + str(row['New Job']), bmss)
 
-        # close job
-            updateDetails = requests.request('POST', servurl + '/pe/api/jobs/savedetails', headers=apiheader, data=json.dumps({
-                "Job_Idx": int(row['New Job']),
-                "ContIndex": int(newJobStatus.iloc[0]['ContIndex']),
-                "Job_CurrentStaff": int(dfSQL.iloc[0]['Job_CurrentStaff']),
-                "Job_Name": str(newJobStatus.iloc[0]['Job_Name']),
-                "Job_Code": str(newJobStatus.iloc[0]['Job_Code']),
-                "Job_Class": str(newJobStatus.iloc[0]['Job_Class']),
-                "Job_Status": int(dfSQL.iloc[0]['Job_Status']),
-                "Job_WorkStatus": int(dfSQL.iloc[0]['Job_WorkStatus']),
-                "Job_Dept": str(newJobStatus.iloc[0]['Job_Dept']),
-                "Job_Office": str(newJobStatus.iloc[0]['Job_Office']),
-                "Job_Masterfile": ""
-            }))
+    # close job
+        updateDetails = requests.request('POST', servurl + '/pe/api/jobs/savedetails', headers=apiheader, data=json.dumps({
+            "Job_Idx": int(row['New Job']),
+            "ContIndex": int(newJobStatus.iloc[0]['ContIndex']),
+            "Job_CurrentStaff": int(dfSQL.iloc[0]['Job_CurrentStaff']),
+            "Job_Name": str(newJobStatus.iloc[0]['Job_Name']),
+            "Job_Code": str(newJobStatus.iloc[0]['Job_Code']),
+            "Job_Class": str(newJobStatus.iloc[0]['Job_Class']),
+            "Job_Status": int(dfSQL.iloc[0]['Job_Status']),
+            "Job_WorkStatus": int(dfSQL.iloc[0]['Job_WorkStatus']),
+            "Job_Dept": str(newJobStatus.iloc[0]['Job_Dept']),
+            "Job_Office": str(newJobStatus.iloc[0]['Job_Office']),
+            "Job_Masterfile": ""
+        }))
 
-            if updateDetails.status_code != 200:
-                skipped.append({'job': row['New Job'], 'status': updateDetails.status_code, 'reason': updateDetails.text, 'point_of_error': 'updateDetails'})
-                continue
-            else:
-                print('Fixed Job: ' + str(row['New Job']))
+        if updateDetails.status_code != 200:
+            skipped.append({'job': row['New Job'], 'status': updateDetails.status_code, 'reason': updateDetails.text, 'point_of_error': 'updateDetails'})
+            continue
+        else:
+            print('Fixed Job: ' + str(row['New Job']))
 
     except:
         skipped.append({'job': row['New Job'], 'point_of_error': 'except block'})
