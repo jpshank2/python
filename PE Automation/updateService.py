@@ -4,11 +4,11 @@ import pandas as pd
 
 load_dotenv(os.path.dirname(os.path.dirname(__file__)) + '\\.env')
 
-clientFile = r'C:\Users\jeremyshank\BMSS\Business Intelligence - Documents (1)\Automation Tools\ClientUpdate.xlsx'
+serviceFile = r'C:\Users\jeremyshank\BMSS\Business Intelligence - Documents (1)\Automation Tools\ServiceUpdate.xlsx'
 
-clientSheet = pd.read_excel(clientFile, 'ClientUpdate')
+serviceSheet = pd.read_excel(serviceFile, 'ServiceUpdate')
 
-badClients = list()
+badServices = list()
 
 servurl = os.getenv('PE_URL')
 appid = os.getenv('PE_APPID')
@@ -28,23 +28,24 @@ apiheader = {'Authorization': 'Bearer ' + token,
 
 tokenExpiry = datetime.datetime.now() + datetime.timedelta(minutes=55)
 
-for x in range(clientSheet.shape[0]):
-    row = clientSheet.iloc[x]
-    client = requests.request('GET', servurl + '/pe/api/clients/loadclient/' + str(row['Contindex']), headers=apiheader)
-    client = client.json()
+for x in range(serviceSheet.shape[0]):
+    row = serviceSheet.iloc[x]
+    service = requests.request('GET', f"{servurl}/pe/api/clients/getclientservicedetails/{str(row['Contindex'])}?service={row['ServIdx']}", headers=apiheader)
+    service = service.json()
+    service = service['ServiceDetail']
 
-    del client['ClientPartner']
-    del client['ClientManager']
+    del service['PartName']
+    del service['ManName']
 
-    client['ClientPartnerIndex'] = int(row['CP'])
-    client['ClientManagerIndex'] = int(row['CM'])
+    service['ServPartner'] = int(row['SP'])
+    service['ServManager'] = int(row['SM'])
 
-    updatedClient = requests.request('POST', servurl + '/pe/api/clients/save', headers=apiheader, data=json.dumps(client))
+    updateService = requests.request('POST', servurl + '/pe/api/clients/updateclientservice', headers=apiheader, data=json.dumps(service))
     
-    if updatedClient.status_code == 200:
-        print(f"Updated Client {client['ClientName']}")
+    if updateService.status_code == 200:
+        print(f"Updated Service {service['ServTitle']} for client {row['Contindex']}")
     else:
-        badClients.append({'Client': row['Contindex'], 'Status': updatedClient.status_code, 'Reason': updatedClient.text})
+        badServices.append({'Client': row['Contindex'], 'Status': updateService.status_code, 'Reason': updateService.text})
 
     time.sleep(5)
 
@@ -58,4 +59,4 @@ for x in range(clientSheet.shape[0]):
 
         tokenExpiry = datetime.datetime.now() + datetime.timedelta(minutes=55)
 
-print(badClients)
+print(badServices)
