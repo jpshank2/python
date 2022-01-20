@@ -23,8 +23,7 @@ resptoken = requests.post(authurl, data=authtype, auth=auth)
 token = resptoken.json()['access_token']
 
 apiheader = {'Authorization': 'Bearer ' + token,
-  'Content-Type': 'application/json', 
-  'User-Agent': ('Mozilla/5.0 (Windows NT 10.0; Win64; x64)' 'AppleWebKit/537.36 (KHTML, like Gecko)' 'Chrome/96.0.3497.100 Safari/537.36')}
+  'Content-Type': 'application/json'}
 
 tokenExpiry = datetime.datetime.now() + datetime.timedelta(minutes=55)
 

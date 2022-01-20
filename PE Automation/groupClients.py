@@ -4,11 +4,13 @@ import pandas as pd
 
 load_dotenv(os.path.dirname(os.path.dirname(__file__)) + '\\.env')
 
-clientFile = r'C:\Users\jeremyshank\BMSS\Business Intelligence - Documents (1)\Automation Tools\ClientUpdate.xlsx'
+groupFile = r'C:\Users\jeremyshank\BMSS\Business Intelligence - Documents (1)\Automation Tools\Clients to Group.xlsx'
 
-clientSheet = pd.read_excel(clientFile, 'ClientUpdate')
+groupSheet = pd.read_excel(groupFile, 'Sheet1')
 
-badClients = list()
+groupSheet = groupSheet[groupSheet['New Group Client Code'].notnull()]
+
+badGroups = list()
 
 servurl = os.getenv('PE_URL')
 appid = os.getenv('PE_APPID')
@@ -27,25 +29,21 @@ apiheader = {'Authorization': 'Bearer ' + token,
 
 tokenExpiry = datetime.datetime.now() + datetime.timedelta(minutes=55)
 
-for x in range(clientSheet.shape[0]):
-    row = clientSheet.iloc[x]
-    client = requests.request('GET', servurl + '/pe/api/clients/loadclient/' + str(row['Contindex']), headers=apiheader)
+for x in range(groupSheet.shape[0]):
+    row = groupSheet.iloc[x]
+    client = requests.request('GET', servurl + '/pe/api/clients/loadclient/' + str(row['Index']), headers=apiheader)
     client = client.json()
 
-    del client['ClientPartner']
-    del client['ClientManager']
+    client['ClientHold'] = int(row['Column1'])
 
-    client['ClientPartnerIndex'] = int(row['CP'])
-    client['ClientManagerIndex'] = int(row['CM'])
-
-    updatedClient = requests.request('POST', servurl + '/pe/api/clients/save', headers=apiheader, data=json.dumps(client))
+    updateClientGroup = requests.request('POST', servurl + '/pe/api/clients/save', headers=apiheader, data=json.dumps(client))
     
-    if updatedClient.status_code == 200:
-        print(f"Updated Client {client['ClientName']}")
+    if updateClientGroup.status_code == 200:
+        print(f"Updated client {row['Index']}")
     else:
-        badClients.append({'Client': row['Contindex'], 'Status': updatedClient.status_code, 'Reason': updatedClient.text})
+        badGroups.append({'Client': row['Contindex'], 'Status': updateClientGroup.status_code, 'Reason': updateClientGroup.text})
 
-    time.sleep(5)
+    time.sleep(2)
 
     if datetime.datetime.now() > tokenExpiry:
         resptoken = requests.post(authurl, data=authtype, auth=auth)
@@ -57,4 +55,4 @@ for x in range(clientSheet.shape[0]):
 
         tokenExpiry = datetime.datetime.now() + datetime.timedelta(minutes=55)
 
-print(badClients)
+print(badGroups)

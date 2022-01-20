@@ -1,0 +1,53 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Vary": "Accept-Encoding",
+        "x-ms-service-request-id": "7cca491d-e1aa-4bc2-b7b3-dd61623f0b24,64828fe1-98f7-413b-87ab-f4fe50cab13a",
+        "Cache-Control": "no-cache",
+        "Set-Cookie": "ARRAffinity=136305d8d1a553a9d509a8380bf2c5ec169e30d6f2d002c57a3dbdd509f1c6d6; domain=org82c1cc46.crm.dynamics.com; path=/; secure; HttpOnly,ReqClientId=03d3f869-a2a5-4ca1-b3d4-b2d806f15b89; expires=Mon, 14-Dec-2071 18:37:57 GMT; path=/; secure; HttpOnly,ARRAffinity=136305d8d1a553a9d509a8380bf2c5ec169e30d6f2d002c57a3dbdd509f1c6d6; domain=org82c1cc46.crm.dynamics.com; path=/; secure; HttpOnly",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "REQ_ID": "64828fe1-98f7-413b-87ab-f4fe50cab13a",
+        "AuthActivityId": "73063046-eacb-4ee4-8a44-ff9ee4d770da",
+        "x-ms-dop-hint": "8",
+        "x-ms-ratelimit-time-remaining-xrm-requests": "1,199.19",
+        "x-ms-ratelimit-burst-remaining-xrm-requests": "7997",
+        "OData-Version": "4.0",
+        "Preference-Applied": "odata.include-annotations=\"*\"",
+        "X-Source": "239111206871322452016738154167598015126673031118121011858183379167149203523526,6716181845832136199371173715222239491202231372137020462122672511051146943436321",
+        "Public": "OPTIONS,GET,HEAD,POST",
+        "Timing-Allow-Origin": "*",
+        "Date": "Tue, 14 Dec 2021 18:37:57 GMT",
+        "Allow": "OPTIONS,GET,HEAD,POST",
+        "Content-Type": "application/json; odata.metadata=full",
+        "Expires": "-1",
+        "Content-Length": "1386"
+    },
+    "body": {
+        "@odata.context": "https://org82c1cc46.crm.dynamics.com/api/data/v9.1/$metadata#crf69_clientserviceses(createdon,crf69_clientservice,crf69_clientservicedesc,crf69_servicepartnerindex,crf69_servicemanagerindex)",
+        "#Microsoft.Dynamics.CRM.DeleteMultiple": {
+            "title": "DeleteMultiple",
+            "target": "https://org82c1cc46.crm.dynamics.com/api/data/v9.1/crf69_clientserviceses/Microsoft.Dynamics.CRM.crmbaseentity/Microsoft.Dynamics.CRM.DeleteMultiple"
+        },
+        "@Microsoft.Dynamics.CRM.totalrecordcount": -1,
+        "@Microsoft.Dynamics.CRM.totalrecordcountlimitexceeded": false,
+        "value": [
+            {
+                "@odata.type": "#Microsoft.Dynamics.CRM.crf69_clientservices",
+                "@odata.id": "https://org82c1cc46.crm.dynamics.com/api/data/v9.1/crf69_clientserviceses(9b74db6a-0c5d-ec11-8f8f-0022480aecb9)",
+                "@odata.etag": "W/\"10249912\"",
+                "@odata.editLink": "crf69_clientserviceses(9b74db6a-0c5d-ec11-8f8f-0022480aecb9)",
+                "createdon@OData.Community.Display.V1.FormattedValue": "12/14/2021 12:34 PM",
+                "createdon@odata.type": "#DateTimeOffset",
+                "createdon": "2021-12-14T18:34:06Z",
+                "crf69_clientservice": "MAS",
+                "crf69_clientservicedesc": "MAS",
+                "crf69_servicepartnerindex@OData.Community.Display.V1.FormattedValue": "3",
+                "crf69_servicepartnerindex": 3,
+                "crf69_servicemanagerindex@OData.Community.Display.V1.FormattedValue": "3",
+                "crf69_servicemanagerindex": 3,
+                "crf69_clientservicesid@odata.type": "#Guid",
+                "crf69_clientservicesid": "9b74db6a-0c5d-ec11-8f8f-0022480aecb9"
+            }
+        ]
+    }
+}
